@@ -37,11 +37,11 @@ async function shortHash(text) {
 }
 
 const TITLES = {
-  page_view: '👁️ New visit',
-  intro_finished: '🎬 Watched the intro',
-  intro_skipped: '⏭️ Skipped the intro',
-  button_click: '🖱️ Clicked the button',
-  left_site: '👋 Left the site',
+  page_view: 'New visit',
+  intro_finished: 'Watched the intro',
+  intro_skipped: 'Skipped the intro',
+  button_click: 'Clicked the button',
+  left_site: 'Left the site',
 };
 
 export default {
@@ -67,7 +67,6 @@ export default {
     const ip = request.headers.get('CF-Connecting-IP') || '';
     const visitor = await shortHash(ip + (env.HASH_SALT || 'change-me'));
 
-    // rate limit: 40 events / minute / visitor
     const now = Date.now();
     const arr = (hits.get(visitor) || []).filter((t) => now - t < 60000);
     if (arr.length >= 40) return new Response(null, { status: 204, headers: cors });
