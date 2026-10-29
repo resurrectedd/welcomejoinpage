@@ -1,0 +1,10 @@
+name = "site-activity"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+[vars]
+# Comma-separated list of sites allowed to send events. No trailing slash.
+# Add "null" only while testing index.html straight from your disk (file://).
+ALLOWED_ORIGINS = "https://yourdomain.com"
+# Set to "true" to also post the raw visitor IP (otherwise only an anonymous short hash is shown).
+LOG_IP = "false"
